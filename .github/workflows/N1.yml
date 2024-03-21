@@ -103,25 +103,25 @@ jobs:
         SFE_FLOW: 0
         ENABLE_WIFI_K510: 0
 
-    - name: Upload firmware to release
-      uses: softprops/action-gh-release@master
-      if: ${{ env.PACKAGED_STATUS == 'success' }} && !cancelled()
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: OpenWrt_${{ env.PACKAGED_OUTPUTDATE }}
-        files: ${{ env.PACKAGED_OUTPUTPATH }}/*.img.xz
-        body: |
-          首次使用建议全新刷写
-          * 基本信息
-          IP: 192.168.2.2
-          账户: root
-          密码: password
+    #- name: Upload firmware to release
+    #  uses: softprops/action-gh-release@master
+    #  if: ${{ env.PACKAGED_STATUS == 'success' }} && !cancelled()
+    #  env:
+    #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #  with:
+    #    tag_name: OpenWrt_${{ env.PACKAGED_OUTPUTDATE }}
+    #    files: ${{ env.PACKAGED_OUTPUTPATH }}/*.img.xz
+    #    body: |
+    #      首次使用建议全新刷写
+    #      * 基本信息
+    #      IP: 192.168.2.2
+    #      账户: root
+    #      密码: password
 
-    - name: Delete old releases
-      uses: dev-drprasad/delete-older-releases@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        keep_latest: 2
-        delete_tags : true
+    #- name: Delete old releases
+    #  uses: dev-drprasad/delete-older-releases@master
+    #  env:
+    #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #  with:
+    #    keep_latest: 2
+    #    delete_tags : true
